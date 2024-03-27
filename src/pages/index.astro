@@ -1,0 +1,50 @@
+---
+import { marked } from 'marked'
+import BaseLayout from '../layouts/BaseLayout.astro'
+import siteConfig from '../site-config'
+
+const websiteInfo = siteConfig.websiteInfo
+---
+
+<BaseLayout description={siteConfig.description} image={siteConfig.image}>
+  {
+    (websiteInfo.title ||
+      websiteInfo.image.src ||
+      websiteInfo.text ||
+      websiteInfo.socialLinks) && (
+      <div class="prose max-w-3xl w-full">
+        {websiteInfo.title && <h1 class="text-title">{websiteInfo.title}</h1>}
+
+        {websiteInfo.text && <div set:html={marked.parse(websiteInfo.text)} />}
+        {websiteInfo.socialLinks.length > 0 && (
+          <>
+            <hr class="w-14 mx-auto my-8 border-t border-truegray-200 dark:border-truegray-800" />
+            <p>Find me on</p>
+            <p class="flex gap-x-4 gap-y-2 flex-wrap">
+              {websiteInfo.socialLinks.map((link) => (
+                <a
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="prose-link flex items-center"
+                >
+                  <i class:list={[link.icon, 'text-sm mr-1']} />
+                  <span>{link.text}</span>
+                </a>
+              ))}
+            </p>
+          </>
+        )}
+        {siteConfig.email && (
+          <p>
+            If you have any questions, please email me at
+            <a prose-link href={`mailto:${siteConfig.email}`}>
+              {siteConfig.email}
+            </a>
+            .
+          </p>
+        )}
+      </div>
+    )
+  }
+</BaseLayout>

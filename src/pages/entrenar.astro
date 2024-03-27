@@ -1,0 +1,29 @@
+---
+import siteConfig from '../site-config'
+import BaseLayout from '../layouts/BaseLayout.astro'
+---
+
+<BaseLayout title="Entrenar" description="P2P Learning" pageOperate={true}>
+  <h1 class="mb-10 text-title">Entrenar</h1>
+
+  <div class="flex flex-row gap-4">
+    <div class="w-1/2">
+      <iframe
+        src="https://replit.com/@mbenjaminzr/ProblemA?embed=true"
+        width="100%"
+        height="500"
+        class="rounded-lg border border-gray-300 shadow-md"
+        style="width: calc(50vw - 50px);"
+      >
+      </iframe>
+    </div>
+    <div class="w-1/2">
+      <iframe
+        src="https://excalidraw.com/"
+        width="100%"
+        height="500"
+        class="rounded-lg border border-gray-300 shadow-md"
+        style="width: calc(50vw - 50px);"></iframe>
+    </div>
+  </div>
+</BaseLayout>
