@@ -1,7 +1,7 @@
 {
   "name": "p2p-learning",
   "type": "module",
-  "version": "0.2.5",
+  "version": "0.0.8",
   "packageManager": "pnpm@8.15.5",
   "engines": {
     "node": ">=18.0"
