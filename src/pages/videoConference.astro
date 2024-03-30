@@ -1,0 +1,13 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+import siteConfig from '../site-config'
+import VideoConferenceComp from '../components/VideoConference'
+---
+
+<BaseLayout>
+  <div class="container">
+    <h1>Video Conference</h1>
+    <p>Join the video conference</p>
+    <VideoConferenceComp client:load />
+  </div>
+</BaseLayout>
