@@ -5,9 +5,17 @@ import VideoConferenceComp from '../components/VideoConference'
 ---
 
 <BaseLayout>
-  <div class="container">
-    <h1>Video Conference</h1>
-    <p>Join the video conference</p>
-    <VideoConferenceComp client:load />
+  <div class="container-fluid">
+    <div class="flex flex-row gap-4">
+      <div class="w-1/2">
+        <VideoConferenceComp client:load />
+      </div>
+      <div class="w-1/2">
+        <iframe
+          height="700px"
+          src="https://onecompiler.com/embed?theme=dark"
+          width="100%"></iframe>
+      </div>
+    </div>
   </div>
 </BaseLayout>
