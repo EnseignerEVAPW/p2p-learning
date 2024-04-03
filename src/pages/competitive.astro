@@ -1,0 +1,27 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+import siteConfig from '../site-config'
+---
+
+<BaseLayout title="Competitivo" description="123">
+  <div class="flex-row">
+    <h1 class="mb-10 text-title">Competitivo</h1>
+    <a
+      class="bottom-4 left-4 border border-gray-300 shadow-md p-4"
+      href="/match">New Match</a
+    >
+  </div>
+  <h2 class="text-2xl font-bold">Registro de Competencia</h2>
+  <div class="grid grid-cols-1 gap-4">
+    <div class="border border-gray-300 shadow-md p-4">
+      <h3 class="text-xl font-bold">FizzBuzz</h3>
+      <p>Rust | Topics: Math, Strings, Simulation</p>
+      <a href="/match/1">View Results</a>
+    </div>
+    <div class="border border-gray-300 shadow-md p-4">
+      <h3 class="text-xl font-bold">Match 2</h3>
+      <p>Match description</p>
+      <a href="/match/2">View Match</a>
+    </div>
+  </div>
+</BaseLayout>

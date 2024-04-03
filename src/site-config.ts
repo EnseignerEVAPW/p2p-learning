@@ -1,8 +1,8 @@
 export const siteConfig = {
-  author: 'dotm87',
+  team: 'EnseignerEVAPW',
   title: 'P2P Learning',
   description: 'P2P Learning',
-  email: '',
+  email: 'dotm87@protonmail.com',
   headerNavLinks: [
     {
       text: 'Inicio',
@@ -10,11 +10,11 @@ export const siteConfig = {
     },
     {
       text: 'Competir',
-      href: '/competir',
+      href: '/contests',
     },
     {
       text: 'Entrenar',
-      href: '/entrenar',
+      href: '/gym',
     },
   ],
   profile: {
@@ -39,15 +39,15 @@ export const siteConfig = {
   pageNavLinks: [
     {
       text: 'Practica',
-      href: '/practica',
+      href: '/practice',
     },
     {
       text: 'Competitivo',
-      href: '/competitivo',
+      href: '/competitive',
     },
     {
       text: 'Torneos',
-      href: '/torneos',
+      href: '/tournaments',
     },
   ],
   footerNavLinks: [
