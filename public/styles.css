@@ -19,15 +19,19 @@
 .react-calendar-heatmap .color-empty {
   fill: rgba(243, 243, 243, 0.1);
 }
+
 .react-calendar-heatmap .color-scale-1 {
   fill: rgba(200, 217, 235, 0.2);
 }
+
 .react-calendar-heatmap .color-scale-2 {
   fill: rgba(156, 190, 227, 0.5);
 }
+
 .react-calendar-heatmap .color-scale-3 {
   fill: rgba(103, 158, 217, 0.7);
 }
+
 .react-calendar-heatmap .color-scale-4 {
   fill: rgba(46, 123, 206, 1);
 }
@@ -39,4 +43,34 @@
 .react-calendar-heatmap rect:hover {
   stroke: #555;
   stroke-width: 1px;
+}
+
+.centrado {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.rule {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  border: 2px solid #b14343;
+  border-radius: 20px;
+  padding: 20px;
+  align-self: center;
+  width: 60%;
+  margin: 10px;
+}
+
+.centrado2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  line-height: 2;
 }

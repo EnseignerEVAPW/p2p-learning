@@ -35,7 +35,7 @@ export const siteConfig = {
     <strong>Sobre el plagio: </strong>Cualquier intento de plagio de soluciones, puede resultar en la descalificación del participante.</p>
      `,
     image: {
-      src: 'hero.jpg',
+      src: '/hero.jpg',
       alt: '',
     },
     socialLinks: [],

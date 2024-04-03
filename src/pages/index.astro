@@ -7,22 +7,28 @@ const websiteInfo = siteConfig.websiteInfo
 ---
 
 <BaseLayout description={siteConfig.description} image={siteConfig.image}>
+  <link rel="stylesheet" href="/styles.css" />
   {
     (websiteInfo.title ||
       websiteInfo.image.src ||
       websiteInfo.text ||
       websiteInfo.socialLinks) && (
-      <div class="prose max-w-3xl w-full">
+      <div class="flex-col w-full text-center">
         {websiteInfo.title && <h1 class="text-title">{websiteInfo.title}</h1>}
-        <>
-          <img src="/osito.png" alt="character" class="w-15 h-18" />
-          <img
-            src="/mapForICPC.png"
-            alt="environment"
-            class="w-180 h-180 rounded-lg"
-          />
-        </>
-        {websiteInfo.text && <div set:html={marked.parse(websiteInfo.text)} />}
+        <div class="centrado">
+          {websiteInfo.text && (
+            <div class="prose" set:html={marked.parse(websiteInfo.text)} />
+          )}
+          <>
+            <img src="/osito.png" alt="character" class="w-10 h-13" />
+            <img
+              src="/mapForICPC.png"
+              alt="environment"
+              class="w-120 h-120 rounded-lg"
+            />
+          </>
+        </div>
+
         {websiteInfo.socialLinks.length > 0 && (
           <>
             <hr class="w-14 mx-auto my-8 border-t border-truegray-200 dark:border-truegray-800" />
