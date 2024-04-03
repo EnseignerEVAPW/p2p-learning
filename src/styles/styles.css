@@ -1,0 +1,34 @@
+.button {
+  background: #d95786;
+  padding: 10px;
+  color: white;
+  border-radius: 10px;
+  border-color: aliceblue;
+  text-decoration: none;
+  margin: 10px;
+}
+
+.button:hover {
+  background: #5764d9;
+  border-color: aliceblue;
+}
+
+#codeEditor {
+  margin-top: 20px;
+  display: none;
+}
+
+#codeEditor:target {
+  margin-top: 20px;
+  display: block;
+}
+
+#pizarra {
+  margin-top: 20px;
+  display: none;
+}
+
+#pizarra:target {
+  margin-top: 20px;
+  display: block;
+}
