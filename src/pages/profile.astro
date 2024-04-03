@@ -1,6 +1,72 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro'
 import siteConfig from '../site-config'
+import Calendar from '../components/Calendar'
+
+const userInfo = {
+  username: 'callao_william',
+  country: 'Bolivia',
+  status: 'Other',
+  email: 'callao_william@gmail.com',
+  description: '...',
+  totalProblemsSolved: '150',
+  highestRating: '2200',
+}
+
+const rankings = [
+  { user: 'SofiaC0de', rating: 2500 },
+  { user: 'AlexLoop', rating: 2450 },
+  { user: 'CodeNinjaEdu', rating: 2400 },
+  { user: 'JuanAlgo', rating: 2350 },
+  { user: 'LambdaLisa', rating: 2300 },
+  { user: 'BitMasterOli', rating: 2250 },
+  { user: 'VectorVic', rating: 2200 },
+]
 ---
 
-<BaseLayout />
+<BaseLayout title="Perfil" description="">
+  <link rel="stylesheet" href="/styles.css" />
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <div class="user-info rounded-lg p-6 mb-4 border border-gray-300 shadow-md">
+      <div class="flex items-center space-x-4 mb-4">
+        <div
+          class="w-24 h-24 rounded-full flex items-center justify-center text-4xl font-semibold border-2 border-gray-300"
+        >
+          {userInfo.username.charAt(0).toUpperCase()}
+        </div>
+        <div>
+          <h2 class="text-2xl font-semibold">{userInfo.username}</h2>
+          <p class="text-sm text-gray-600">{userInfo.country}</p>
+          <p class="text-sm text-gray-500">{userInfo.email}</p>
+        </div>
+      </div>
+      <div class="border-t border-gray-200 pt-4">
+        <p class="mb-2"><strong>Status:</strong> {userInfo.status}</p>
+        <p class="mb-2"><strong>Description:</strong> {userInfo.description}</p>
+        <p class="mb-2">
+          <strong>Total Problems Solved:</strong>
+          {userInfo.totalProblemsSolved}
+        </p>
+        <p><strong>Highest Rating:</strong> {userInfo.highestRating}</p>
+      </div>
+    </div>
+    <div
+      class="rounded-lg p-6 mb-4 border border-gray-300 shadow-md flex flex-col"
+    >
+      <h3 class="font-semibold text-lg mb-4">Ranking</h3>
+      <ol class="list-decimal pl-4 flex-grow">
+        {
+          rankings.map((rank) => (
+            <li key={rank.user} class="flex justify-between my-2">
+              <span>{rank.user}</span>
+              <span class="font-semibold">{rank.rating}</span>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </div>
+  <div class="p-6 rounded-lg border border-gray-300 shadow-md mt-4">
+    <Calendar />
+  </div>
+</BaseLayout>
