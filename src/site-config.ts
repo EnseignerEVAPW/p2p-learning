@@ -1,5 +1,5 @@
 export const siteConfig = {
-  author: 'dotm87',
+  author: 'Scoville',
   title: 'P2P Learning',
   description: 'P2P Learning',
   email: '',
@@ -15,6 +15,10 @@ export const siteConfig = {
     {
       text: 'Entrenar',
       href: '/entrenar',
+    },
+    {
+      text: 'Reglas',
+      href: '/reglas',
     },
   ],
   profile: {

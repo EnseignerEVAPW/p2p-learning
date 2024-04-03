@@ -14,7 +14,14 @@ const websiteInfo = siteConfig.websiteInfo
       websiteInfo.socialLinks) && (
       <div class="prose max-w-3xl w-full">
         {websiteInfo.title && <h1 class="text-title">{websiteInfo.title}</h1>}
-
+        <>
+          <img src="/osito.png" alt="character" class="w-15 h-18" />
+          <img
+            src="/mapForICPC.png"
+            alt="environment"
+            class="w-180 h-180 rounded-lg"
+          />
+        </>
         {websiteInfo.text && <div set:html={marked.parse(websiteInfo.text)} />}
         {websiteInfo.socialLinks.length > 0 && (
           <>
