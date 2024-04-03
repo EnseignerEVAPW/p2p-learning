@@ -1,33 +1,48 @@
 ---
-import siteConfig from '../site-config'
 import BaseLayout from '../layouts/BaseLayout.astro'
+import siteConfig from '../site-config'
+import VideoConferenceComp from '../components/VideoConference'
 ---
 
 <BaseLayout title="Entrenar" description="P2P Learning" pageOperate={true}>
-  <h1 class="mb-10 text-title">Entrenar</h1>
-
-  <div class="flex flex-row gap-4">
-    <div class="w-1/2">
-      <iframe
-        src="https://replit.com/@mbenjaminzr/ProblemA?embed=true"
-        width="100%"
-        height="500"
-        class="rounded-lg border border-gray-300 shadow-md"
-        style="width: calc(50vw - 50px);"
-      >
-      </iframe>
-    </div>
-    <div class="w-1/2 relative">
-      <iframe
-        src="https://excalidraw.com/"
-        width="50%"
-        height="400"
-        class="rounded-lg border border-gray-300 shadow-md"
-        style="width: calc(50vw - 50px);"></iframe>
-      <a
-        class="absolute bottom-4 left-4 border border-gray-300 shadow-md p-4"
-        href="/videoConference">Crear una VideoConferencia</a
-      >
+  <div class="container-fluid">
+    <div class="flex flex-row gap-4">
+      <div class="w-1/2">
+        <VideoConferenceComp client:load />
+      </div>
+      <div class="w-1/2">
+        <div class="flex justify-center gap-4 mt-4">
+          <a href="#codeEditor" class="button"> Editor de código </a>
+          <a href="#pizarra" class="button"> Pizarra virtual </a>
+        </div>
+        <div id="codeEditor">
+          <div class="codeEditor">
+            <iframe
+              height="700px"
+              src="https://onecompiler.com/embed?theme=dark"
+              width="100%"
+              class="rounded-lg border border-pink-8 shadow-md"></iframe>
+          </div>
+        </div>
+        <div id="pizarra">
+          <iframe
+            src="https://excalidraw.com/"
+            width="100%"
+            height="700"
+            class="rounded-lg border border-pink-3 shadow-md"
+            style="width: calc(50vw - 50px);"></iframe>
+        </div>
+        <div id="tags">
+          <div id="hints-container">
+            <button id="getHint-button">Get Hint</button>
+            <div class="hint">2200</div>
+            <div class="hint">Segment Tree</div>
+            <div class="hint">Strings</div>
+          </div>
+          <div class="timer-hint">Next Hint available in 13 seconds</div>
+        </div>
+        <a href="/form" class="button"> TERMINAR </a>
+      </div>
     </div>
   </div>
 </BaseLayout>

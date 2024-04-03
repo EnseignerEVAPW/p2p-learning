@@ -1,0 +1,42 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.user-info h2,
+.ranking h3 {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.user-info p,
+.ranking ol {
+  margin: 0.5rem 0;
+}
+
+.react-calendar-heatmap .color-empty {
+  fill: rgba(243, 243, 243, 0.1);
+}
+.react-calendar-heatmap .color-scale-1 {
+  fill: rgba(200, 217, 235, 0.2);
+}
+.react-calendar-heatmap .color-scale-2 {
+  fill: rgba(156, 190, 227, 0.5);
+}
+.react-calendar-heatmap .color-scale-3 {
+  fill: rgba(103, 158, 217, 0.7);
+}
+.react-calendar-heatmap .color-scale-4 {
+  fill: rgba(46, 123, 206, 1);
+}
+
+.react-calendar-heatmap .react-calendar-heatmap-small-text {
+  font-size: 5px;
+}
+
+.react-calendar-heatmap rect:hover {
+  stroke: #555;
+  stroke-width: 1px;
+}
