@@ -10,8 +10,9 @@ import { AuthModule } from './auth/auth.module';
     username: 'tourist',
     password: 'tourist',
     database: 'p2plearning',
-    entities: [],
-    synchronize: true
+    entities: ['dist/**/*.entity.js'],
+    synchronize: true,
+
   }),
     AuthModule
     ],
