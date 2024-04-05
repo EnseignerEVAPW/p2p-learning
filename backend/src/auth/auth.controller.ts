@@ -24,12 +24,12 @@ export class AuthController {
   }
 
   @Get('profile')
-@UseGuards(AuthGuard)
-profile(
-  @Request()
-  req: any
-) {
-  return req.user;
-}
+  @UseGuards(AuthGuard)
+  profile(
+    @Request()
+    req: any
+  ) {
+    return req.user;
+  }
 
 }

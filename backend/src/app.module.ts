@@ -1,6 +1,8 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AuthModule } from './auth/auth.module';
+import { CodeforcesService } from './codeforces/codeforces.service';
+import { CodeforcesController } from './codeforces/codeforces.controller';
 
 @Module({
   imports: [TypeOrmModule.forRoot({
@@ -16,7 +18,7 @@ import { AuthModule } from './auth/auth.module';
   }),
     AuthModule
     ],
-    controllers: [],
-    providers: [],
+    controllers: [CodeforcesController],
+    providers: [CodeforcesService],
 })
 export class AppModule { }

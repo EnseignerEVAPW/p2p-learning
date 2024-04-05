@@ -8,19 +8,29 @@ import * as bcryptjs from "bcryptjs";
 import { UsersService } from "src/users/users.service";
 import { LoginDto } from "./dto/login.dto";
 import { RegisterDto } from "./dto/register.dto";
+import { CodeforcesService } from "src/codeforces/codeforces.service";
   
   @Injectable()
   export class AuthService {
     constructor(
       private readonly usersService: UsersService,
-      private readonly jwtService: JwtService
+      private readonly jwtService: JwtService,
+      private readonly codeforcesService: CodeforcesService
     ) {}
   
-    async register({ password, username }: RegisterDto) {
+    async register({ password, username,contestId, indexProblem }: RegisterDto) {
+      
       const user = await this.usersService.findOneByUsername(username);
-  
+      
       if (user) {
-        throw new BadRequestException("Email already exists");
+        throw new BadRequestException("username already exists");
+      }
+
+      const checkCE = await this.codeforcesService.checkCompilationError(username,contestId, indexProblem);
+      console.log ( "compilation error: ", checkCE);
+      
+      if(!checkCE){
+        throw new BadRequestException("Could not authenticate user");
       }
   
       const hashedPassword = await bcryptjs.hash(password, 10);

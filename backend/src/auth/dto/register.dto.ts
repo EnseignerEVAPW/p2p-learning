@@ -11,4 +11,9 @@ export class RegisterDto {
   @MinLength(6)
   @Transform(({ value }) => value.trim())
   password: string;
+
+  // id de problema random de codeforces
+  contestId: string;
+  // index de problema random de codeforces
+  indexProblem: string;
 }
