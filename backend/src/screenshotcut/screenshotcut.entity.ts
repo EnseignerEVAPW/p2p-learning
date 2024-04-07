@@ -4,6 +4,6 @@ export class ScreenShotCut {
     id: string
     name: string
     createdAt: Date
-    content: ImageBitmap
+    content: string
 }
 
