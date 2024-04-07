@@ -1,7 +1,8 @@
+/* eslint-disable prettier/prettier */
 import { Controller, Get } from '@nestjs/common';
 
-@Controller('servicetask')
-export class ServicetaskController {
+@Controller('screenschootcut')
+export class ScreenshotCutController {
     @Get()
     helloWorld() {
         return 'Hello World!';

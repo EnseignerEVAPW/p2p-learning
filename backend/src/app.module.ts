@@ -1,8 +1,10 @@
+/* eslint-disable prettier/prettier */
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AuthModule } from './auth/auth.module';
 import { CodeforcesService } from './codeforces/codeforces.service';
 import { CodeforcesController } from './codeforces/codeforces.controller';
+import { ScreenshotCutModule } from './screenshotcut/screenshotcut.module';
 
 @Module({
   imports: [TypeOrmModule.forRoot({
@@ -16,7 +18,8 @@ import { CodeforcesController } from './codeforces/codeforces.controller';
     synchronize: true,
 
   }),
-    AuthModule
+    AuthModule,
+    ScreenshotCutModule
     ],
     controllers: [CodeforcesController],
     providers: [CodeforcesService],
