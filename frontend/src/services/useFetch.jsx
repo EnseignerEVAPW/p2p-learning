@@ -7,7 +7,7 @@ export function useFetch(url, options){
         fetch(url, options)
             .then(response => response.json())
             .then(response => setData(response))
-            // .catch(err => console.error(err));
+            .catch(err => console.error(err));
     },[]);
     return {data};
 }
