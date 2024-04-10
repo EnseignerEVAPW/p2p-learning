@@ -11,8 +11,9 @@ function Board() {
     headers: {
       accept: 'application/json',
       'content-type': 'application/json',
-      authorization: 'Bearer eyJtaXJvLm9yaWdpbiI6ImV1MDEifQ_Rrf51xGWBJTDSbhJrnODh6qNmB4'
-    }
+      authorization: 'Bearer eyJtaXJvLm9yaWdpbiI6ImV1MDEifQ_GIFtxnu-o9eQ77RXF9BViNKYtqw'
+    },
+    body: JSON.stringify({name: 'P2PLearning', description: 'Pizarra de ayuda'})
   };
 
   const saveInCache = useMemo(() => {
@@ -21,19 +22,23 @@ function Board() {
         .then(response => response.json())
         .then(response => {
           setData(response);
+          console.log(data);
           setBoardId(response.id);
+          setLinkBoard(response.viewLink);
         })
         .catch(err => console.error(err));
     }
+    
+    
   }, []);
-  useEffect(() => { saveInCache; getBoard(boardId) }, []);
+  useEffect(() => { saveInCache }, []);  // al principio solo es saveInCache; getBoard ya no 
   // const { createBoard } = useFetch("https://api.miro.com/v2/boards", optionsCreateBoard); solo se carga, #raro
 
   const optionsGetBoard = {
     method: 'GET',
     headers: {
       accept: 'application/json',
-      authorization: 'Bearer eyJtaXJvLm9yaWdpbiI6ImV1MDEifQ_Rrf51xGWBJTDSbhJrnODh6qNmB4'
+      authorization: 'Bearer eyJtaXJvLm9yaWdpbiI6ImV1MDEifQ_GIFtxnu-o9eQ77RXF9BViNKYtqw'
     }
   };
 
@@ -52,9 +57,9 @@ function Board() {
     <div>
       <h1>Board</h1>
       <div>
-        {linkBoard ?
+        {data || linkBoard?
           (
-            <iframe src={linkBoard} width="800" height="600" allowFullScreen></iframe>
+            <iframe src={linkBoard || data.viewLink} width="800" height="600" allowFullScreen></iframe>
           ) :
           (
             <p>loading...</p>

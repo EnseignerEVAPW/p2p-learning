@@ -2,6 +2,8 @@
 import BaseLayout from '../layouts/BaseLayout.astro'
 import siteConfig from '../site-config'
 import VideoConferenceComp from '../components/VideoConference'
+import Board from '../components/Board'
+
 ---
 
 <BaseLayout title="Entrenar" description="P2P Learning" pageOperate={true}>
@@ -26,12 +28,7 @@ import VideoConferenceComp from '../components/VideoConference'
           </div>
         </div>
         <div id="pizarra">
-          <iframe
-            src="https://excalidraw.com/"
-            width="100%"
-            height="700"
-            class="rounded-lg border border-pink-3 shadow-md"
-            style="width: calc(50vw - 50px);"></iframe>
+          <Board client:load />
         </div>
         <div id="tags">
           <div id="hints-container">
