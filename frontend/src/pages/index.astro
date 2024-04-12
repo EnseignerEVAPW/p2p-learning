@@ -7,50 +7,38 @@ const websiteInfo = siteConfig.websiteInfo
 ---
 
 <BaseLayout description={siteConfig.description} image={siteConfig.image}>
+  <link rel="stylesheet" href="/styles.css" />
   {
     (websiteInfo.title ||
       websiteInfo.image.src ||
       websiteInfo.text ||
       websiteInfo.socialLinks) && (
-      <div class="prose max-w-3xl w-full">
+      <div class="flex-col w-full text-center">
         {websiteInfo.title && <h1 class="text-title">{websiteInfo.title}</h1>}
-        <>
-          <img src="/osito.png" alt="character" class="w-15 h-18" />
-          <img
-            src="/mapForICPC.png"
-            alt="environment"
-            class="w-180 h-180 rounded-lg"
-          />
-        </>
-        {websiteInfo.text && <div set:html={marked.parse(websiteInfo.text)} />}
-        {websiteInfo.socialLinks.length > 0 && (
+        <div class="centrado">
+          {websiteInfo.text && (
+            <div class="prose" set:html={marked.parse(websiteInfo.text)} />
+          )}
           <>
-            <hr class="w-14 mx-auto my-8 border-t border-truegray-200 dark:border-truegray-800" />
-            <p>Find me on</p>
-            <p class="flex gap-x-4 gap-y-2 flex-wrap">
-              {websiteInfo.socialLinks.map((link) => (
-                <a
-                  href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="prose-link flex items-center"
-                >
-                  <i class:list={[link.icon, 'text-sm mr-1']} />
-                  <span>{link.text}</span>
-                </a>
-              ))}
-            </p>
+            <img src="/osito.png" alt="character" class="w-10 h-13" />
+            <img
+              src="/mapForICPC.png"
+              alt="environment"
+              class="w-120 h-120 rounded-lg"
+            />
           </>
-        )}
-        {siteConfig.email && (
-          <p>
-            If you have any questions, please email me at
-            <a prose-link href={`mailto:${siteConfig.email}`}>
-              {siteConfig.email}
-            </a>
-            .
-          </p>
-        )}
+        </div>
+        {websiteInfo.socialLinks.map((link) => (
+          <a
+            href={link.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="prose-link flex items-center"
+          >
+            <i class:list={[link.icon, 'text-sm mr-1']} />
+            <span>{link.text}</span>
+          </a>
+        ))}
       </div>
     )
   }

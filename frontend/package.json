@@ -13,7 +13,8 @@
     "preview": "astro preview",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "release": "bumpp"
+    "release": "bumpp",
+    "precommit": "lint-staged"
   },
   "dependencies": {
     "@astrojs/mdx": "^2.2.0",
@@ -50,6 +51,6 @@
     "pre-commit": "pnpm lint-staged"
   },
   "lint-staged": {
-    "*": "pnpm lint:fix"
+    "*.js": ["eslint --fix", "git add"]
   }
 }

@@ -40,3 +40,33 @@
   stroke: #555;
   stroke-width: 1px;
 }
+
+.centrado {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.rule {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  border: 2px solid #b14343;
+  border-radius: 20px;
+  padding: 20px;
+  align-self: center;
+  width: 60%;
+  margin: 10px;
+}
+
+.centrado2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  line-height: 2;
+}
