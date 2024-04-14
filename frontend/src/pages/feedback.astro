@@ -1,6 +1,5 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-// Suponiendo que los estilos estén en un archivo CSS importado
 import "../styles/feedback-form.css";
 ---
 
@@ -17,13 +16,17 @@ import "../styles/feedback-form.css";
         <div class="radio-options">
           <label class="custom-radio">
             <input type="radio" name="resolve" value="yes" />
-            <span class="radio-text">Sí</span>
+            <span class="radio-text">Sí, lo resolví</span>
           </label>
           <label class="custom-radio">
             <input type="radio" name="resolve" value="no" />
-            <span class="radio-text">No</span>
+            <span class="radio-text">No, necesité ayuda</span>
           </label>
         </div>
+      </div>
+
+      <div class="form-group time-spent">
+        <p>Tiempo empleado: [XX] minutos.</p>
       </div>
 
       <div class="form-group slider-container">
@@ -40,8 +43,35 @@ import "../styles/feedback-form.css";
         />
         <span id="face">😐</span>
       </div>
+
+      <div class="form-group">
+        <label for="comments" class="form-question"
+          >Añade cualquier comentario adicional aquí:</label
+        >
+        <textarea id="comments" name="comments" rows="4"></textarea>
+      </div>
+
+      <div class="similar-exercises">
+        <button type="button" class="exercise-button">Ejercicio 1</button>
+        <button type="button" class="exercise-button">Ejercicio 2</button>
+        <button type="button" class="exercise-button">Ejercicio 3</button>
+      </div>
+
       <button type="submit" class="submit-button">Enviar Feedback</button>
     </form>
   </div>
 
+  <script type="module">
+    function updateFace(value) {
+      const face = document.getElementById("face");
+      if (value < 4) face.textContent = "😟";
+      else if (value < 7) face.textContent = "😐";
+      else face.textContent = "😊";
+    }
+
+    const satisfactionSlider = document.getElementById("satisfaction");
+    satisfactionSlider.addEventListener("input", (event) =>
+      updateFace(event.target.value)
+    );
+  </script>F
 </BaseLayout>
