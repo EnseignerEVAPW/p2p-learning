@@ -16,7 +16,7 @@
 }
 
 .form-group {
-  background: #f9f9f9;
+  /* background: #f9f9f9; */
   padding: 1rem;
   border-radius: 8px;
   border: 1px solid #ccc;
@@ -63,9 +63,9 @@
 
 .exercise-button {
   padding: 1rem 1.5rem;
-  border: none;
-  background: #e0e0e0;
   border-radius: 8px;
+  width: 30%;
+  border: 1px solid #ccc;
   cursor: pointer;
   transition: background-color 0.3s;
 }

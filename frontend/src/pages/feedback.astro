@@ -8,8 +8,6 @@ import "../styles/feedback-form.css";
   description="Página de feedback para recoger opiniones sobre los ejercicios realizados."
 >
   <div class="feedback-container">
-    <h1 class="feedback-header">Feedback sobre el ejercicio</h1>
-
     <form class="feedback-form">
       <div class="form-group">
         <p class="form-question">¿Pudiste resolver el ejercicio?</p>
@@ -20,13 +18,13 @@ import "../styles/feedback-form.css";
           </label>
           <label class="custom-radio">
             <input type="radio" name="resolve" value="no" />
-            <span class="radio-text">No, necesité ayuda</span>
+            <span class="radio-text">No, soy la decepción de mi familia</span>
           </label>
         </div>
       </div>
 
       <div class="form-group time-spent">
-        <p>Tiempo empleado: [XX] minutos.</p>
+        <p>Tiempo empleado: XX:XX minutos.</p>
       </div>
 
       <div class="form-group slider-container">
@@ -63,15 +61,18 @@ import "../styles/feedback-form.css";
 
   <script type="module">
     function updateFace(value) {
-      const face = document.getElementById("face");
-      if (value < 4) face.textContent = "😟";
-      else if (value < 7) face.textContent = "😐";
-      else face.textContent = "😊";
-    }
-
+        const face = document.getElementById('face');
+        if (value === '0' || value === '1') face.textContent = '😔';
+        else if (value === '2' || value === '3') face.textContent = '😟';
+        else if (value === '4') face.textContent = '😕';
+        else if (value === '5') face.textContent = '😐';
+        else if (value === '6') face.textContent = '🙂';
+        else if (value === '7' || value === '8') face.textContent = '😊';
+        else if (value === '9' || value === '10') face.textContent = '😁';
+        }
     const satisfactionSlider = document.getElementById("satisfaction");
     satisfactionSlider.addEventListener("input", (event) =>
       updateFace(event.target.value)
     );
-  </script>F
+  </script>
 </BaseLayout>
