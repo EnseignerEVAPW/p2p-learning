@@ -16,7 +16,6 @@
 }
 
 .form-group {
-  /* background: #f9f9f9; */
   padding: 1rem;
   border-radius: 8px;
   border: 1px solid #ccc;
@@ -53,7 +52,7 @@
 }
 
 #face {
-  font-size: 2rem;
+  font-size: 3rem;
 }
 
 .similar-exercises {
@@ -71,7 +70,7 @@
 }
 
 .exercise-button:hover {
-  background-color: #d0d0d0;
+  background-color: rgba(156, 190, 227, 0.5);
 }
 
 .submit-button {
@@ -79,7 +78,7 @@
   border: none;
   border-radius: 8px;
   color: white;
-  background-color: #007bff;
+  background-color: rgba(46, 123, 206, 1);
   cursor: pointer;
   transition: background-color 0.3s;
 }
@@ -92,7 +91,7 @@ textarea#comments {
   border: 1px solid #ccc;
   border-radius: 8px;
   padding: 0.5rem;
-  background-color: white;
+  background-color: transparent;
   height: 100px;
   width: 100%;
   resize: none;

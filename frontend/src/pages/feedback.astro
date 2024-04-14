@@ -74,5 +74,9 @@ import "../styles/feedback-form.css";
     satisfactionSlider.addEventListener("input", (event) =>
       updateFace(event.target.value)
     );
+    const feedbackForm = document.querySelector('.feedback-form');
+      feedbackForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+      });
   </script>
 </BaseLayout>
