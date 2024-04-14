@@ -20,6 +20,10 @@ export const siteConfig = {
       text: 'Reglas',
       href: '/reglas',
     },
+    {
+      text: 'Perfil',
+      href: '/profile',
+    },
   ],
   profile: {
     text: 'Perfil',
