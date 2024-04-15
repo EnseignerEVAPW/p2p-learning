@@ -1,0 +1,82 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import "../styles/feedback-form.css";
+---
+
+<BaseLayout
+  title="Feedback"
+  description="Página de feedback para recoger opiniones sobre los ejercicios realizados."
+>
+  <div class="feedback-container">
+    <form class="feedback-form">
+      <div class="form-group">
+        <p class="form-question">¿Pudiste resolver el ejercicio?</p>
+        <div class="radio-options">
+          <label class="custom-radio">
+            <input type="radio" name="resolve" value="yes" />
+            <span class="radio-text">Sí, lo resolví</span>
+          </label>
+          <label class="custom-radio">
+            <input type="radio" name="resolve" value="no" />
+            <span class="radio-text">No, soy la decepción de mi familia</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="form-group time-spent">
+        <p>Tiempo empleado: XX:XX minutos.</p>
+      </div>
+
+      <div class="form-group slider-container">
+        <label for="satisfaction" class="slider-label">
+          Califica tu satisfacción con el ejercicio (0-10)
+        </label>
+        <input
+          type="range"
+          id="satisfaction"
+          name="satisfaction"
+          min="0"
+          max="10"
+          oninput="updateFace(this.value)"
+        />
+        <span id="face">😐</span>
+      </div>
+
+      <div class="form-group">
+        <label for="comments" class="form-question"
+          >Añade cualquier comentario adicional aquí:</label
+        >
+        <textarea id="comments" name="comments" rows="4"></textarea>
+      </div>
+
+      <div class="similar-exercises">
+        <button type="button" class="exercise-button">Ejercicio 1</button>
+        <button type="button" class="exercise-button">Ejercicio 2</button>
+        <button type="button" class="exercise-button">Ejercicio 3</button>
+      </div>
+
+      <button type="submit" class="submit-button">Enviar Feedback</button>
+    </form>
+  </div>
+
+  <script type="module">
+    function updateFace(value) {
+        const face = document.getElementById('face');
+        if (value === '0' || value === '1') face.textContent = '😔';
+        else if (value === '2' || value === '3') face.textContent = '😟';
+        else if (value === '4') face.textContent = '😕';
+        else if (value === '5') face.textContent = '😐';
+        else if (value === '6') face.textContent = '🙂';
+        else if (value === '7' || value === '8') face.textContent = '😊';
+        else if (value === '9' || value === '10') face.textContent = '😁';
+        }
+    const satisfactionSlider = document.getElementById("satisfaction");
+    satisfactionSlider.addEventListener("input", (event) =>
+      updateFace(event.target.value)
+    );
+    const feedbackForm = document.querySelector('.feedback-form');
+      feedbackForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+      });
+  </script>
+</BaseLayout>

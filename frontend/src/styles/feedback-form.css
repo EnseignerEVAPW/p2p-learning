@@ -1,0 +1,98 @@
+.feedback-container {
+  max-width: 700px;
+  margin: auto;
+  padding: 1rem;
+}
+
+.feedback-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.feedback-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.form-group {
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.form-question {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.radio-options {
+  display: flex;
+  gap: 1rem;
+}
+
+.custom-radio {
+  display: flex;
+  align-items: center;
+}
+
+.radio-text {
+  margin-left: 0.3rem;
+}
+
+.slider-container {
+  display: flex;
+  align-items: center;
+}
+
+#satisfaction {
+  margin-right: 1rem;
+  flex-grow: 1;
+}
+
+#face {
+  font-size: 3rem;
+}
+
+.similar-exercises {
+  display: flex;
+  justify-content: space-between;
+}
+
+.exercise-button {
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  width: 30%;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.exercise-button:hover {
+  background-color: rgba(156, 190, 227, 0.5);
+}
+
+.submit-button {
+  padding: 1rem;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  background-color: rgba(46, 123, 206, 1);
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.submit-button:hover {
+  background-color: #0056b3;
+}
+
+textarea#comments {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 0.5rem;
+  background-color: transparent;
+  height: 100px;
+  width: 100%;
+  resize: none;
+}
