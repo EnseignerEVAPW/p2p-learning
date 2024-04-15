@@ -13,10 +13,11 @@ function Board() {
       'content-type': 'application/json',
       authorization: 'Bearer eyJtaXJvLm9yaWdpbiI6ImV1MDEifQ_GIFtxnu-o9eQ77RXF9BViNKYtqw'
     },
-    body: JSON.stringify({name: 'P2PLearning', description: 'Pizarra de ayuda'})
+    body: JSON.stringify({ name: 'P2PLearning', description: 'Pizarra de ayuda' })
   };
 
-  const saveInCache = useMemo(() => {
+  
+  useEffect(() => { 
     if (!data) {
       fetch("https://api.miro.com/v2/boards", optionsCreateBoard)
         .then(response => response.json())
@@ -28,44 +29,47 @@ function Board() {
         })
         .catch(err => console.error(err));
     }
-    
-    
-  }, []);
-  useEffect(() => { saveInCache }, []);  // al principio solo es saveInCache; getBoard ya no 
+   }, [data]);  // al principio solo es saveInCache; getBoard ya no 
   // const { createBoard } = useFetch("https://api.miro.com/v2/boards", optionsCreateBoard); solo se carga, #raro
 
-  const optionsGetBoard = {
-    method: 'GET',
+  const optionsDeleteBoard = {
+    method: 'DELETE',
     headers: {
       accept: 'application/json',
       authorization: 'Bearer eyJtaXJvLm9yaWdpbiI6ImV1MDEifQ_GIFtxnu-o9eQ77RXF9BViNKYtqw'
     }
   };
 
-  const getBoard = (boardId) => {
-    const idWithoutLastChar = boardId.slice(0, -1);
-    console.log(idWithoutLastChar);
-    fetch(`https://api.miro.com/v2/boards/${idWithoutLastChar}%3D`, optionsGetBoard)
-      .then(response => response.json())
-      .then(response => {console.log(response);
-        setLinkBoard(response.viewLink);
-      })
-      .catch(err => console.error(err));
+  function deleteBoard() {
+    if(boardId){
+      console.log("tristee");
+      const idWithoutLastChar = boardId.slice(0, -1);
+      fetch(`https://api.miro.com/v2/boards/${idWithoutLastChar}%3D`, optionsDeleteBoard)
+        .then(response => response.json())
+        .then(response => console.log(response))
+        .catch(err => console.error(err));
+    }else{
+      console
+    }
+    
   }
 
   return (
     <div>
-      <h1>Board</h1>
       <div>
-        {data || linkBoard?
+        {data || linkBoard ?
           (
-            <iframe src={linkBoard || data.viewLink} width="800" height="600" allowFullScreen></iframe>
+            <>
+              <iframe src={linkBoard || data.viewLink} width="800" height="600" allowFullScreen></iframe>
+            </>
           ) :
           (
             <p>loading...</p>
           )}
       </div>
-
+      <button onClick={ deleteBoard }>Delete board</button>
+      <div>
+      </div>
     </div>
   );
 }
