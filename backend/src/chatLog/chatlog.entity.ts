@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 
-export class ScreenShotCut {
+export class ChatLog {
     id: string
     name: string
     createdAt: Date

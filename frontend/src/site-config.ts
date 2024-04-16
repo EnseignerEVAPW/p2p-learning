@@ -24,10 +24,6 @@ export const siteConfig = {
       text: 'Perfil',
       href: '/profile',
     },
-    {
-      text: 'F',
-      href: '/feedback',
-    },
   ],
   profile: {
     text: 'Perfil',

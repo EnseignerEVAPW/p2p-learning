@@ -1,6 +1,10 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 
 function VideoConferenceComp() {
+  const [dataFromUser2, setDataFromUser2] = useState({
+    name: '',
+    content: '',
+  })
   const apiRef = useRef(null)
 
   useEffect(() => {
@@ -21,6 +25,10 @@ function VideoConferenceComp() {
           roomName: 'vpaas-magic-cookie-15a65f78518d4474b1896c5505157fd8/780012',
           parentNode: document.querySelector('#jaas-container'),
         })
+        apiRef.current.on('incomingMessage', (event) => {
+          console.log(`Message received from ${event.from}: ${event.message}`);
+          setDataFromUser2({ name: event.from, content: event.message });
+        });
       }
       else {
         console.error('JitsiMeetExternalAPI not loaded')
@@ -35,9 +43,37 @@ function VideoConferenceComp() {
     }
   }, [])
 
+  const handleMessages = () => {
+    console.log("minimo entre");
+    const optionsPost = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(dataFromUser2)
+    }
+    try {
+      fetch('http://localhost:3000/chatLog', optionsPost)
+        .then(response => {
+          if(!response.ok) {
+            console.log("triste")
+          }else{
+            response.json()}})
+        .then(response => {
+
+          console.log(response)
+        })
+        .catch(err => console.error(err))
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  }
+
   return (
     <>
-      <div id="jaas-container" style={{ height: '100vh' }} />
+      <div id="jaas-container" style={{ height: '90vh' }} />
+      <button onClick={ handleMessages}>Guardar mensajes recibidos</button>
+
     </>
 
   )

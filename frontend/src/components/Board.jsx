@@ -2,12 +2,13 @@ import React, { useState, useEffect, useMemo } from 'react'
 import { useFetch } from '../services/useFetch';
 import { navigate } from 'astro/virtual-modules/transitions-router.js';
 
+const auth = 'Bearer eyJtaXJvLm9yaWdpbiI6ImV1MDEifQ_Z7tiAZpXWoNJw7pPapHx1p37aVE';
 function Board() {
   const [data, setData] = useState(null);
   const [boardId, setBoardId] = useState(null);
   const [linkBoard, setLinkBoard] = useState(null);
   const [itemId, setItemId] = useState("");
-  let idWithoutLastChar = "";
+
   
   const optionsCreateBoard = {
     method: 'POST',
@@ -67,48 +68,6 @@ function Board() {
     navigate('/feedback');
   }
 
-  const optionsSaveImg = {
-    method: 'POST',
-    headers: {
-      accept: 'application/json',
-      'content-type': 'application/json',
-      authorization: 'Bearer eyJtaXJvLm9yaWdpbiI6ImV1MDEifQ_GIFtxnu-o9eQ77RXF9BViNKYtqw'
-    },
-    body: JSON.stringify({
-      data: {
-        url: 'https://miro.com/static/images/page/mr-index/localization/en/slider/ideation_brainstorming.png'
-      }
-    })
-  };
-
-  function saveImg() {
-    if (boardId) {
-      const idWithoutLastChar = boardId.slice(0, -1);
-      fetch(`https://api.miro.com/v2/boards/${idWithoutLastChar}%3D/images`, optionsSaveImg)
-        .then(response => response.json())
-        .then(response => {
-          console.log(response);
-          setItemId(response.id);
-        })
-        .catch(err => console.error(err));
-    }
-  }
-
-  const optionsGet = {
-    method: 'GET',
-    headers: {
-      accept: 'application/json',
-      authorization: 'Bearer eyJtaXJvLm9yaWdpbiI6ImV1MDEifQ_GIFtxnu-o9eQ77RXF9BViNKYtqw'
-    }
-  };
-
-  function getImg() {
-    const idWithoutLastChar = boardId.slice(0, -1);
-    fetch(`https://api.miro.com/v2/boards/${idWithoutLastChar}%3D/images/${itemId}`, optionsGet)
-      .then(response => response.json())
-      .then(response => console.log("hola", response))
-      .catch(err => console.error(err));
-  }
   return (
     <div>
       <div>
@@ -122,8 +81,6 @@ function Board() {
             <p>loading...</p>
           )}
       </div>
-      <button style={styles.myButton} onClick={getImg}>OBTENER IMAGEN</button>
-      <button style={styles.myButton} onClick={saveImg}>GUARDAR IMAGEN</button>
       <button style={styles.myButton} onClick={deleteBoard}>TERMINAR</button>
       <div>
       </div>

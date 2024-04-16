@@ -1,22 +1,22 @@
 /* eslint-disable prettier/prettier */
 import { Injectable } from '@nestjs/common';
-import { ScreenShotCut } from './screenshotcut.entity';
+import { ChatLog } from './chatlog.entity';
 import {v4} from 'uuid';
 
 @Injectable()
-export class ScreenshotCutService {
+export class ChatLogService {
 
-    private items: ScreenShotCut[] = [{
+    private items: ChatLog[] = [{
         id: '1',
-        name: 'screenshot1',
+        name: 'chatlog1',
         createdAt: new Date(),
         content: '/example',
     }]
 
-    getAllScreenshots() {
+    getAllChatlog() {
         return this.items
     }
-    createScreenshot(name: string, content: string) {
+    createChatlog(name: string, content: string) {
         const newItem = {
             id: v4(),
             name,
@@ -26,7 +26,7 @@ export class ScreenshotCutService {
         this.items.push(newItem)
         return newItem
      }
-    uploadScreenshot(name: string, content: string) { 
+    uploadChatlog(name: string, content: string) { 
         const newItem = {
             id: v4(),
             name,
@@ -36,18 +36,18 @@ export class ScreenshotCutService {
         this.items.push(newItem)
         return newItem
     }
-    getScreenshotById(id: string): ScreenShotCut {
+    getChatlogById(id: string): ChatLog {
         return this.items.find(item => item.id === id)
     }
 
-    updateScrenshot(id: string, updatedFields: any) : ScreenShotCut { 
-        const screenImg = this.getScreenshotById(id)
+    updateScrenshot(id: string, updatedFields: any) : ChatLog { 
+        const screenImg = this.getChatlogById(id)
         const newImg = Object.assign(screenImg, updatedFields)
         this.items = this.items.map(item => item.id === id ? newImg : item)
         return newImg;
     }
 
-    deleteScreenshot(id: string) {
+    deleteChatlog(id: string) {
         this.items = this.items.filter(item => item.id !== id)
      }
 }
