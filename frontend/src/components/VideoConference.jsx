@@ -1,6 +1,11 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 
 function VideoConferenceComp() {
+  const [id, setId] = useState('');
+  const [dataFromUser2, setDataFromUser2] = useState({
+    name: '',
+    content: '',
+  })
   const apiRef = useRef(null)
 
   useEffect(() => {
@@ -21,6 +26,10 @@ function VideoConferenceComp() {
           roomName: 'vpaas-magic-cookie-15a65f78518d4474b1896c5505157fd8/780012',
           parentNode: document.querySelector('#jaas-container'),
         })
+        apiRef.current.on('incomingMessage', (event) => {
+          console.log(`Message received from ${event.from}: ${event.message}`);
+          setDataFromUser2({ name: event.from, content: event.message });
+        });
       }
       else {
         console.error('JitsiMeetExternalAPI not loaded')
@@ -35,9 +44,59 @@ function VideoConferenceComp() {
     }
   }, [])
 
+  const handleUpdates = () => {
+    const optionPatch = {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(dataFromUser2)
+    };
+
+    fetch(`http://localhost:3000/chatLog/${id}`, optionPatch)
+      .then(response => {
+        if (!response.ok) {
+          console.log("triste")
+        }
+        return response.json();
+      })
+      .then(response => {
+        console.log(response);
+      })
+      .catch(err => console.error("este", err))
+  }
+
+  const handleMessages = () => {
+    const optionsPost = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(dataFromUser2)
+    };
+
+    fetch('http://localhost:3000/chatLog', optionsPost)
+      .then(response => {
+        if (!response.ok) {
+          console.log("triste")
+        }
+        return response.json();
+      })
+      .then(response => {
+        console.log(response);
+        setId(response.id)
+      })
+      .catch(err => console.error("este", err))
+  }
+
+
   return (
     <>
-      <div id="jaas-container" style={{ height: '100vh' }} />
+      <div id="jaas-container" style={{ height: '90vh' }} />
+      <div style={{display: 'flex', justifyContent: 'space-between'}}>
+        <button onClick={handleMessages}>Guardar mensajes recibidos</button>
+        <button onClick={handleUpdates}>Actualizar mensajes</button>
+      </div>
     </>
 
   )
