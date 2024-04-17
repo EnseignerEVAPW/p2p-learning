@@ -1,15 +1,14 @@
 import React, { useState, useEffect, useMemo } from 'react'
 import { useFetch } from '../services/useFetch';
 import { navigate } from 'astro/virtual-modules/transitions-router.js';
-
 const auth = 'Bearer eyJtaXJvLm9yaWdpbiI6ImV1MDEifQ_Z7tiAZpXWoNJw7pPapHx1p37aVE';
+
 function Board() {
   const [data, setData] = useState(null);
   const [boardId, setBoardId] = useState(null);
   const [linkBoard, setLinkBoard] = useState(null);
   const [itemId, setItemId] = useState("");
 
-  
   const optionsCreateBoard = {
     method: 'POST',
     headers: {
@@ -47,6 +46,7 @@ function Board() {
         .catch(err => console.error(err));
     }
   }, [data]);
+
   // const { createBoard } = useFetch("https://api.miro.com/v2/boards", optionsCreateBoard); solo se carga, #raro
 
   const optionsDeleteBoard = {
