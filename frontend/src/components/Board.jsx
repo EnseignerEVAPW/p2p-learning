@@ -74,7 +74,7 @@ function Board() {
         {data || linkBoard ?
           (
             <>
-              <iframe src={linkBoard || data.viewLink} width="800" height="600" allowFullScreen></iframe>
+              <iframe src={linkBoard || data.viewLink} width="100%" height="700" allowFullScreen></iframe>
             </>
           ) :
           (
