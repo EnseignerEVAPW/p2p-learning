@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 
 function VideoConferenceComp() {
+  const [id, setId] = useState('');
   const [dataFromUser2, setDataFromUser2] = useState({
     name: '',
     content: '',
@@ -43,35 +44,59 @@ function VideoConferenceComp() {
     }
   }, [])
 
+  const handleUpdates = () => {
+    const optionPatch = {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(dataFromUser2)
+    };
+
+    fetch(`http://localhost:3000/chatLog/${id}`, optionPatch)
+      .then(response => {
+        if (!response.ok) {
+          console.log("triste")
+        }
+        return response.json();
+      })
+      .then(response => {
+        console.log(response);
+      })
+      .catch(err => console.error("este", err))
+  }
+
   const handleMessages = () => {
-    console.log("minimo entre");
     const optionsPost = {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(dataFromUser2)
-    }
-    
-      fetch('http://localhost:3000/chatLog', optionsPost)
-        .then(response => {
-          if(!response.ok) {
-            console.log("triste")
-          }
-          return response.json();})
-        .then(response => {
+    };
 
-          console.log(response)
-        })
-        .catch(err => console.error("este",err))
-    
+    fetch('http://localhost:3000/chatLog', optionsPost)
+      .then(response => {
+        if (!response.ok) {
+          console.log("triste")
+        }
+        return response.json();
+      })
+      .then(response => {
+        console.log(response);
+        setId(response.id)
+      })
+      .catch(err => console.error("este", err))
   }
+
 
   return (
     <>
       <div id="jaas-container" style={{ height: '90vh' }} />
-      <button onClick={ handleMessages}>Guardar mensajes recibidos</button>
-
+      <div style={{display: 'flex', justifyContent: 'space-between'}}>
+        <button onClick={handleMessages}>Guardar mensajes recibidos</button>
+        <button onClick={handleUpdates}>Actualizar mensajes</button>
+      </div>
     </>
 
   )

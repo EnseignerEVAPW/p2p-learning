@@ -25,7 +25,7 @@ export class ChatLogController {
 
     @Patch(':id')
     updateChatlog(@Param('id') id: string, @Body() updatedItem: any){ 
-        return this.chatlogService.updateScrenshot(id, updatedItem)
+        return this.chatlogService.updateChatlog(id, updatedItem)
     }
 
     @Post('uploadChatlog')
