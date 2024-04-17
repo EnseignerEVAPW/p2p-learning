@@ -52,21 +52,19 @@ function VideoConferenceComp() {
       },
       body: JSON.stringify(dataFromUser2)
     }
-    try {
+    
       fetch('http://localhost:3000/chatLog', optionsPost)
         .then(response => {
           if(!response.ok) {
             console.log("triste")
-          }else{
-            response.json()}})
+          }
+          return response.json();})
         .then(response => {
 
           console.log(response)
         })
-        .catch(err => console.error(err))
-    } catch (error) {
-      console.error('Error:', error);
-    }
+        .catch(err => console.error("este",err))
+    
   }
 
   return (

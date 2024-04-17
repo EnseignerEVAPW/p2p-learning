@@ -4,7 +4,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { AuthModule } from './auth/auth.module';
 import { CodeforcesService } from './codeforces/codeforces.service';
 import { CodeforcesController } from './codeforces/codeforces.controller';
-import { ScreenshotCutModule } from './screenshotcut/screenshotcut.module';
+import { ChatLogModule } from './chatLog/chatlog.module';
 
 @Module({
   imports: [TypeOrmModule.forRoot({
@@ -19,7 +19,7 @@ import { ScreenshotCutModule } from './screenshotcut/screenshotcut.module';
 
   }),
     AuthModule,
-    ScreenshotCutModule
+    ChatLogModule
     ],
     controllers: [CodeforcesController],
     providers: [CodeforcesService],
