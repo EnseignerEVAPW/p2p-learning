@@ -1,0 +1,37 @@
+--- 
+import BaseLayout from "../layouts/BaseLayout.astro"
+--- 
+
+<BaseLayout pageTitle="KMP">
+<h1>KMP - KNUTH MORRIS PRATT</h1>
+<p>
+    The KMP matching algorithm uses degenerating property (pattern having the same sub-patterns appearing more than once in the pattern) of the pattern and improves the worst-case complexity to O(n+m). 
+
+The basic idea behind KMP’s algorithm is: whenever we detect a mismatch (after some matches), we already know some of the characters in the text of the next window. 
+<br/> <a href="https://www.geeksforgeeks.org/kmp-algorithm-for-pattern-searching/">(geeksfrogeeks.org,2023)</a>
+</p>
+
+<code>
+    algorithm KMP(P[1, . . . , m], T[1, . . . , n]) <br/>
+input: pattern P of length m and text T of length n<br/>
+preconditions: 1 ≤ m ≤ n<br/>
+output: list of all numbers s, such that P occurs with shift s in T
+q ← 0;<br/>
+i ← 0;<br/>
+while (i menor n) /* P[1, . . . , q] == T[i − q + 1, . . . , i]
+<br/>
+if (P[q + 1] == T[i + 1])
+<br/>
+q ← q + 1;<br/>
+i ← i + 1;<br/>
+if (q == m)<br/>
+
+output i − q;<br/>
+q ← π(q); /*slide the pattern to the right<br/>
+
+else /* a mismatch occurred<br/>
+
+if (q == 0)  i ← i + 1 <br/>
+else  q ← π(q) <br/>
+</code>
+</BaseLayout>

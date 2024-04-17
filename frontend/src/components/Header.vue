@@ -31,7 +31,7 @@ watchEffect(() => {
 </script>
 
 <template>
-  <header text-lg max-w-3xl mx-auto h-18 px-6 flex justify-between items-center relative>
+  <header text-lg max-w-4xl mx-auto h-18 px-6 flex justify-between items-center relative>
     <a href="/" class="font-bold text-xl">P2P Learning</a>
     <nav
       v-show="menu" ref="menuRef" flex flex-wrap gap-4 sm:gap-6 sm:position-initial absolute z-199 top-15 sm:flex-row
