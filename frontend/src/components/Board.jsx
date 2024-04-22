@@ -1,6 +1,6 @@
 import { Tldraw, track, useEditor } from 'tldraw';
 import 'tldraw/tldraw.css'
-import { useYjsStore } from '../services/useYjsStore';
+//import { useYjsStore } from '../services/useYjsStore';
 
 const HOST_URL =
 	import.meta.env.MODE === 'development'
@@ -8,14 +8,14 @@ const HOST_URL =
 		: 'wss://demos.yjs.dev'
 
 function Board() {
-  const store = useYjsStore({
+  /*const store = useYjsStore({
     roomId: 'example1',
     hostUrl: HOST_URL,
-  })
+  })*/
   return (
     <div style={{width:'100%', height: '700px'}}>
       <Tldraw 
-        store={store}
+        //store={store}
         components={{
           SharePanel : NameEditor,
         }}
