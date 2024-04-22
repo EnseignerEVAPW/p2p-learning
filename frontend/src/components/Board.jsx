@@ -1,14 +1,11 @@
 import { Tldraw, track, useEditor } from 'tldraw';
 import 'tldraw/tldraw.css'
-//import { useYjsStore } from '../services/useYjsStore';
+//import { usePartyStore } from '../services/usePartyStore';
 
-const HOST_URL =
-	import.meta.env.MODE === 'development'
-		? 'ws://localhost:1234'
-		: 'wss://demos.yjs.dev'
+const HOST_URL = 'localhost:1999'  //QUIZA DIRECTAMENTE
 
 function Board() {
-  /*const store = useYjsStore({
+  /*const store = usePartyStore({
     roomId: 'example1',
     hostUrl: HOST_URL,
   })*/
