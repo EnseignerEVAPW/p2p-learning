@@ -1,9 +1,0 @@
-{
-  "$schema": "https://www.partykit.io/schema.json",
-  "name": "p2p-learning-party",
-  "main": "src/server.ts",
-  "compatibilityDate": "2024-04-21",
-  "serve": {
-    "path": "public"
-  }
-}
