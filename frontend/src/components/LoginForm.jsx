@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { navigate } from 'astro/virtual-modules/transitions-router.js';
 
 const LoginForm = () => {
   const [username, setUsername] = useState('');
