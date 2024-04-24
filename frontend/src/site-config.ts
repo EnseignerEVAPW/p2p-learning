@@ -24,6 +24,10 @@ export const siteConfig = {
       text: 'Perfil',
       href: '/profile',
     },
+    {
+      text: 'All Blogs',
+      href: '/blogs',
+    },
   ],
   profile: {
     text: 'Perfil',
