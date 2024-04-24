@@ -1,18 +1,18 @@
 import { Tldraw, track, useEditor } from 'tldraw';
 import 'tldraw/tldraw.css'
-//import { usePartyStore } from '../services/usePartyStore';
+import { usePartyStore } from '../services/usePartyStore';
 
 const HOST_URL = 'localhost:1999'  //QUIZA DIRECTAMENTE
 
 function Board() {
-  /*const store = usePartyStore({
+  const store = usePartyStore({
     roomId: 'example1',
     hostUrl: HOST_URL,
-  })*/
+  })
   return (
     <div style={{width:'100%', height: '700px'}}>
       <Tldraw 
-        //store={store}
+        store={store}
         components={{
           SharePanel : NameEditor,
         }}

@@ -5,6 +5,6 @@
   "compatibilityDate": "2024-04-23",
   "serve":{
     "path":"public",
-    "build":"party/client.ts"
+    "build":"src/services/usePartyStore.ts"
   }
 }
