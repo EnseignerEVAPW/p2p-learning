@@ -19,15 +19,19 @@
 .react-calendar-heatmap .color-empty {
   fill: rgba(243, 243, 243, 0.1);
 }
+
 .react-calendar-heatmap .color-scale-1 {
   fill: rgba(200, 217, 235, 0.2);
 }
+
 .react-calendar-heatmap .color-scale-2 {
   fill: rgba(156, 190, 227, 0.5);
 }
+
 .react-calendar-heatmap .color-scale-3 {
   fill: rgba(103, 158, 217, 0.7);
 }
+
 .react-calendar-heatmap .color-scale-4 {
   fill: rgba(46, 123, 206, 1);
 }
@@ -150,4 +154,24 @@
   display: flex;
   flex-direction: column;
   padding: 10px;
+}
+
+.containerBlogs {
+  width: 100%;
+  height: 100%;
+  margin: 10px;
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  align-content: center;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.blog {
+  border: 2px solid rgba(103, 158, 217, 0.7);
+  border-radius: 20px;  
+  width: 280px;
+  height: 250px;
+  padding: 15px;
 }

@@ -92,7 +92,7 @@ function VideoConferenceComp() {
 
   return (
     <>
-      <div id="jaas-container" style={{ height: '90vh' }} />
+      <div id="jaas-container" style={{ height: '90%' }} />
       <div style={{display: 'flex', justifyContent: 'space-between'}}>
         <button onClick={handleMessages}>Guardar mensajes recibidos</button>
         <button onClick={handleUpdates}>Actualizar mensajes</button>
