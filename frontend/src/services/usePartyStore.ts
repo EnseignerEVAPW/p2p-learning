@@ -1,8 +1,8 @@
 import {
-	HistoryEntry,
-	StoreListener,
-	TLRecord,
-	TLStoreWithStatus,
+	type HistoryEntry,
+	type StoreListener,
+	type TLRecord,
+	type TLStoreWithStatus,
 	createTLStore,
 	defaultShapeUtils,
 	throttle,

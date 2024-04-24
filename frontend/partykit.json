@@ -4,7 +4,7 @@
   "main": "party/server.ts",
   "compatibilityDate": "2024-04-23",
   "serve":{
-    "path":"public",
+    "path":"src",
     "build":"src/services/usePartyStore.ts"
   }
 }
