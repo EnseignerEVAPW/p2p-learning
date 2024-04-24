@@ -22,7 +22,6 @@ export class CodeforcesService {
   async checkCompilationError(username: string, contestId: string, indexProblem: string): Promise<boolean> {
     const response = await axios.get(`https://codeforces.com/api/user.status?handle=${username}&count=3`);
     // iterar sobre los 3 ultimos problemas
-    console.log("commparar " + contestId + " " + indexProblem); 
     for (const submission of response.data.result) {
         // hace cuantos segundos se hizo la submission
         const submissionTime = new Date(submission.creationTimeSeconds * 1000);
@@ -34,8 +33,15 @@ export class CodeforcesService {
             return true;
         }
     }
-
     return false;
+  }
+
+  async checkAuthenticationName(username: string) {
+    // count = 1 in user.status
+    // handel = username
+    const response = await axios.get(`https://codeforces.com/api/user.info?handles=${username}`);
+    console.log(response.data.result[0].firstName);
+    return (response.data.result[0].firstName == "P2P-Auth");
   }
 
 }

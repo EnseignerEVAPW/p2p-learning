@@ -26,6 +26,7 @@
     "@types/react-dom": "^18.2.23",
     "@unocss/reset": "^0.58.5",
     "astro": "^4.5.2",
+    "axios": "^1.6.8",
     "jsonwebtoken": "^9.0.2",
     "marked": "^11.2.0",
     "react": "^18.2.0",
@@ -51,6 +52,9 @@
     "pre-commit": "pnpm lint-staged"
   },
   "lint-staged": {
-    "*.js": ["eslint --fix", "git add"]
+    "*.js": [
+      "eslint --fix",
+      "git add"
+    ]
   }
 }

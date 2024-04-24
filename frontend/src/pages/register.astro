@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro'
-import LoginForm from '../components/LoginForm.jsx'
+import RegisterForm from '../components/RegisterForm.jsx'
 
 ---
 
@@ -11,11 +11,10 @@ import LoginForm from '../components/LoginForm.jsx'
   <div class="flex justify-center items-center min-h-screen">
     <div class="login-wrapper">
       <div class="w-full max-w-sm p-6 bg-white rounded-lg shadow-lg">
-        <h2 class="text-2xl font-semibold text-center mb-4">Iniciar Sesión</h2>
+        <h2 class="text-2xl font-semibold text-center mb-4">Registro</h2>
 
-        <LoginForm />
+        <RegisterForm />
 
-        <p class="text-sm text-center text-gray-600">¿No tienes una cuenta? <a href="/register" class="text-blue-500 hover:text-blue-600">Regístrate</a></p>
       </div>
     </div>
   </div>
