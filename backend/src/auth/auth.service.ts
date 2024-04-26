@@ -18,19 +18,20 @@ import { CodeforcesService } from "src/codeforces/codeforces.service";
       private readonly codeforcesService: CodeforcesService
     ) {}
   
-    async register({ password, username,contestId, indexProblem }: RegisterDto) {
+    async register({ password, username, passwordConfirmation }: RegisterDto) {
       
       const user = await this.usersService.findOneByUsername(username);
-      
       if (user) {
         throw new BadRequestException("username already exists");
       }
+      if(password !== passwordConfirmation){
+        throw new BadRequestException("passwords do not match");
+      }
 
-      const checkCE = await this.codeforcesService.checkCompilationError(username,contestId, indexProblem);
-      console.log ( "compilation error: ", checkCE);
-      
-      if(!checkCE){
-        throw new BadRequestException("Could not authenticate user");
+
+      const checkCE = await this.codeforcesService.checkAuthenticationName(username);
+      if (!checkCE) {
+        throw new BadRequestException("Authentication name is not P2P-Auth");
       }
   
       const hashedPassword = await bcryptjs.hash(password, 10);
@@ -66,4 +67,3 @@ import { CodeforcesService } from "src/codeforces/codeforces.service";
       };
     }
   }
-  
