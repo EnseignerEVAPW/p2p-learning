@@ -3,14 +3,14 @@ import BaseLayout from '../layouts/BaseLayout.astro'
 import RegisterForm from '../components/RegisterForm.jsx'
 
 ---
-
 <BaseLayout>
   <head>
     <link rel="stylesheet" href="/styles.css" />
   </head>
-  <div class="flex justify-center items-center min-h-screen">
-    <div class="login-wrapper">
-      <div class="w-full max-w-sm p-6 bg-white rounded-lg shadow-lg">
+  <div class="flex justify-center items-center min-h-screen text-center"> 
+    <div class="login-wrapper mx-auto"> 
+      <p class="text-sm text-yellow-600 mb-4">Haz Esto Primero: (solo para el registro) cambia tu primer nombre en codeforces a P2P Auth</p>
+      <div class="w-full max-w-sm p-6 bg-white rounded-lg shadow-lg mx-auto"> 
         <h2 class="text-2xl font-semibold text-center mb-4">Registro</h2>
 
         <RegisterForm client:load />
@@ -19,3 +19,4 @@ import RegisterForm from '../components/RegisterForm.jsx'
     </div>
   </div>
 </BaseLayout>
+

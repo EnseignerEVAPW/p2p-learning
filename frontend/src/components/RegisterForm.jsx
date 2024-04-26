@@ -32,6 +32,7 @@ const RegisterForm = () => {
   
 
   return (
+    <>
     
     <form style={{ display: 'flex', flexDirection: 'column', width: '300px' }} onSubmit={handleSubmit}>
       <div style={{ marginBottom: '15px' }}>
@@ -72,6 +73,7 @@ const RegisterForm = () => {
       </div>
       <button type="submit" style={{ backgroundColor: '#309eff', color: '#fff', padding: '10px 15px', borderRadius: '5px', cursor: 'pointer' }}>Registrarse</button>
     </form>
+    </>
   );
 };
 
