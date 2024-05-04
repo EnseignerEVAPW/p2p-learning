@@ -4,6 +4,9 @@ import siteConfig from '../site-config'
 import VideoConferenceComp from '../components/VideoConference'
 import Board from '../components/view/Board'
 
+const url = new URL(Astro.request.url);
+const codeInvite = url.searchParams.get('codeInvite');
+
 ---
 
 <BaseLayout title="Entrenar" description="P2P Learning" pageOperate={true}>
@@ -28,7 +31,7 @@ import Board from '../components/view/Board'
           </div>
         </div>
         <div id="pizarra">
-          <Board client:load />
+          <Board client:load codeRoom={codeInvite}/>
         </div>
         <div id="tags">
           <div id="hints-container">

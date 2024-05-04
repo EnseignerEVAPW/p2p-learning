@@ -11,8 +11,8 @@ import { ChatLogModule } from './chatLog/chatlog.module';
     type: 'mysql',
     host: 'localhost',
     port: 3306,
-    username: 'tourist',    //change  
-    password: 'tourist',   //change
+    username: 'root',    //change  
+    password: 'hi28password',   //change
     database: 'p2plearning',
     entities: ['dist/**/*.entity.js'],
     synchronize: true,

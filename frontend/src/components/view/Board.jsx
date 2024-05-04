@@ -19,9 +19,9 @@ import '../../../public/styles/Board.css';
 
 const HOST_URL = 'localhost:1999'  //QUIZA DIRECTAMENTE
 
-function Board() {
+function Board(codeInvite) {
     const store = usePartyStore({
-        roomId: 'example1',
+        roomId: `example1${codeInvite}`,
         hostUrl: HOST_URL,
     });
 
