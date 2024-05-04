@@ -6,7 +6,10 @@ import Board from '../components/view/Board'
 
 const url = new URL(Astro.request.url);
 const codeInvite = url.searchParams.get('codeInvite');
-
+const props = {codeRoom: codeInvite};
+console.log(Astro.props, 'proppps');
+console.log('URL:', url);
+console.log('codeInvite:', codeInvite);
 ---
 
 <BaseLayout title="Entrenar" description="P2P Learning" pageOperate={true}>
@@ -31,7 +34,7 @@ const codeInvite = url.searchParams.get('codeInvite');
           </div>
         </div>
         <div id="pizarra">
-          <Board client:load codeRoom={codeInvite}/>
+          <Board client:load {...props}/>
         </div>
         <div id="tags">
           <div id="hints-container">

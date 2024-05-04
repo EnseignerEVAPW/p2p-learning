@@ -16,12 +16,15 @@ import 'tldraw/tldraw.css'
 import { usePartyStore } from '../../services/usePartyStore';
 import NameEditor from '../common/NameEditor';
 import '../../../public/styles/Board.css';
+import { useParams } from 'react-router-dom';
 
 const HOST_URL = 'localhost:1999'  //QUIZA DIRECTAMENTE
 
-function Board(codeInvite) {
+function Board({codeRoom}) {
+    //const {codeRoom} = useParams();
+    console.log('my code room is', codeRoom);
     const store = usePartyStore({
-        roomId: `example1${codeInvite}`,
+        roomId: `example1${codeRoom}`,
         hostUrl: HOST_URL,
     });
 
