@@ -1,0 +1,178 @@
+@ -0,0 +1,177 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.user-info h2,
+.ranking h3 {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.user-info p,
+.ranking ol {
+  margin: 0.5rem 0;
+}
+
+.react-calendar-heatmap .color-empty {
+  fill: rgba(243, 243, 243, 0.1);
+}
+
+.react-calendar-heatmap .color-scale-1 {
+  fill: rgba(200, 217, 235, 0.2);
+}
+
+.react-calendar-heatmap .color-scale-2 {
+  fill: rgba(156, 190, 227, 0.5);
+}
+
+.react-calendar-heatmap .color-scale-3 {
+  fill: rgba(103, 158, 217, 0.7);
+}
+
+.react-calendar-heatmap .color-scale-4 {
+  fill: rgba(46, 123, 206, 1);
+}
+
+.react-calendar-heatmap .react-calendar-heatmap-small-text {
+  font-size: 5px;
+}
+
+.react-calendar-heatmap rect:hover {
+  stroke: #555;
+  stroke-width: 1px;
+}
+
+.centrado {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.rule {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  border: 2px solid #b14343;
+  border-radius: 20px;
+  padding: 20px;
+  align-self: center;
+  width: 60%;
+  margin: 10px;
+}
+
+.centrado2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  line-height: 2;
+}
+
+.button {
+  background: #d95786;
+  padding: 10px;
+  color: white;
+  border-radius: 10px;
+  border-color: aliceblue;
+  text-decoration: none;
+  margin: 10px;
+  box-shadow:
+    0 4px 8px 0 rgba(0, 0, 0, 0.2),
+    0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.button:hover {
+  background: #5764d9;
+  border-color: aliceblue;
+}
+
+#codeEditor {
+  margin-top: 20px;
+  display: none;
+}
+
+#codeEditor:target {
+  margin-top: 20px;
+  display: block;
+}
+
+#pizarra {
+  margin-top: 20px;
+  display: none;
+}
+
+#pizarra:target {
+  margin-top: 20px;
+  display: block;
+}
+
+#hints-container {
+  display: flex;
+}
+
+.hint {
+  border: 1px solid black;
+  padding: 10px;
+  margin-right: 10px;
+  border-radius: 13px;
+  color: white;
+  border-color: #a81039;
+  border-width: 2px;
+}
+
+#getHint-button {
+  margin-right: 15px;
+  padding: 10px;
+  background-color: #56bca9;
+  border-radius: 13px;
+  font-size: 1.1rem;
+  color: black;
+  box-shadow:
+    0 4px 8px 0 rgba(0, 0, 0, 0.2),
+    0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+#getHint-button:hover {
+  background-color: #1b3f38;
+  color: white;
+}
+
+.timer-hint {
+  margin-top: 15px;
+  margin-left: 5px;
+  color: white;
+}
+
+#tags {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.containerBlogs {
+  width: 100%;
+  height: 100%;
+  margin: 10px;
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  align-content: center;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.blog {
+  border: 2px solid rgba(103, 158, 217, 0.7);
+  border-radius: 20px;  
+  width: 280px;
+  height: 250px;
+  padding: 15px;
+}
