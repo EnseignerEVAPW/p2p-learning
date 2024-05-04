@@ -1,9 +1,9 @@
 <script lang="ts" setup>
 import { ref, watchEffect } from 'vue'
 import { onClickOutside, useWindowSize } from '@vueuse/core'
-import siteConfig from '../site-config'
-import ThemeToggle from './ThemeToggle.vue'
-import Profile from './Profile.vue'
+import siteConfig from '../../site-config'
+import ThemeToggle from '../ThemeToggle.vue'
+import Profile from '../Profile.vue'
 
 const navLinks = siteConfig.headerNavLinks || []
 

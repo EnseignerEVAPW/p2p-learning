@@ -1,0 +1,21 @@
+.loginFormContainer {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+}
+
+.loginInputField {
+    margin-bottom: 15px;
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+.loginButtonSubmit {
+    background-color: #309eff;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}

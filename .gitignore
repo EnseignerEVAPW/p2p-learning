@@ -224,3 +224,5 @@ dist
 ### VisualStudioCode Patch ###
 # Ignore all local history of files
 .history
+package.json
+package-lock.json
