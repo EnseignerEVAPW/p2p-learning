@@ -8,6 +8,7 @@ import react from '@astrojs/react'
 // https://astro.build/config
 export default defineConfig({
   site: 'https://p2p-learning.netlify.app/',
+  output: 'server',
   server: {
     port: 1977,
   },

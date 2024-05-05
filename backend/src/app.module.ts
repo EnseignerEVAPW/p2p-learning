@@ -5,21 +5,23 @@ import { AuthModule } from './auth/auth.module';
 import { CodeforcesService } from './codeforces/codeforces.service';
 import { CodeforcesController } from './codeforces/codeforces.controller';
 import { ChatLogModule } from './chatLog/chatlog.module';
+import { ImagesModule } from './images/images.module';
 
 @Module({
   imports: [TypeOrmModule.forRoot({
     type: 'mysql',
     host: 'localhost',
     port: 3306,
-    username: 'root',    //change  
-    password: 'hi28password',   //change
+    username: 'tourist',    //change  
+    password: 'tourist',   //change
     database: 'p2plearning',
-    entities: ['dist/**/*.entity.js'],
+    entities: ['dist/**/*.entity{.ts,.js}'],
     synchronize: true,
 
   }),
     AuthModule,
-    ChatLogModule
+    ChatLogModule,
+    ImagesModule
     ],
     controllers: [CodeforcesController],
     providers: [CodeforcesService],

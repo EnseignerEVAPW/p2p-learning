@@ -16,24 +16,62 @@ import 'tldraw/tldraw.css'
 import { usePartyStore } from '../../services/usePartyStore';
 import NameEditor from '../common/NameEditor';
 import '../../../public/styles/Board.css';
-import { useParams } from 'react-router-dom';
+import { useCallback, useEffect, useState } from 'react';
 
 const HOST_URL = 'localhost:1999'  //QUIZA DIRECTAMENTE
 
 function Board({codeRoom}) {
-    //const {codeRoom} = useParams();
+    const [app, setApp] = useState(null);
     console.log('my code room is', codeRoom);
     const store = usePartyStore({
         roomId: `example1${codeRoom}`,
         hostUrl: HOST_URL,
     });
 
+    const handleMount = useCallback((instance) => {
+        setApp(instance);
+    },[]);
+
+    useEffect(()=> {
+        const interval = setInterval(()=> {
+            exportAndSave();
+        }, 900000);
+
+        return () => clearInterval(interval);
+    }, [app]);
+
+    const exportAndSave = async () => {
+        if(!app) return;
+        const dataURL = await app.export({type:'png'});
+        await saveInDataBase(dataURL);
+    }
+
+    const saveInDataBase =  async(data) => {
+        try{
+            const response = await fetch('/api/save-drawing',{
+                method:'POST',
+                headers:{
+                    'Content-Type': 'application/json',
+                },
+                body:JSON.stringify({image: data}),
+            });
+            if(response.ok){
+                alert('Saved succesfully');
+            }else{
+                alert('Sad')
+            }
+        }catch(e){
+            console.error('fallo', e);
+        }
+    }
     return (
         <div className="board-container">
             <Tldraw 
                 store={store}
+                onMount={handleMount}
                 components={{ SharePanel: NameEditor }}
             />
+            <button onClick={exportAndSave}>EXPORTAR</button>
         </div>
     );
 }
