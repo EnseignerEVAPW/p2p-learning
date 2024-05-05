@@ -1,28 +1,29 @@
-.calendar-heatmap-container {
+/* Calendar.module.css */
+.calendarHeatmapContainer {
     max-width: 900px;
     margin: 0 auto;
 }
 
-.month-labels-container {
+.monthLabelsContainer {
     display: flex;
     justify-content: space-between;
     text-align: center;
     margin-bottom: 20px;
 }
 
-.month-label {
+.monthLabel {
     margin: 0 10px;
     flex-grow: 1;
     display: flex;
     justify-content: center;
 }
 
-.month-label:first-child {
+.firstChild {
     margin-left: 0;
     justify-content: flex-start;
 }
 
-.month-label:last-child {
+.lastChild {
     margin-right: 0;
     justify-content: flex-end;
 }

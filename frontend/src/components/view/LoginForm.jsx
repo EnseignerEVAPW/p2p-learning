@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { navigate } from 'astro/virtual-modules/transitions-router.js';
+import styles from './LoginForm.module.css';
 
 const LoginForm = () => {
   const [username, setUsername] = useState('');
@@ -7,13 +8,11 @@ const LoginForm = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-
-    // Implement form submission logic here (e.g., API call)
     console.log('Form submitted:', { username, password });
   };
 
   return (
-    <form style={{ display: 'flex', flexDirection: 'column', width: '300px' }} onSubmit={handleSubmit}>
+    <form className={styles.form} onSubmit={handleSubmit}>
       <div style={{ marginBottom: '15px' }}>
         <label htmlFor="username">Usuario:</label>
         <input
@@ -23,7 +22,7 @@ const LoginForm = () => {
           value={username}
           onChange={(e) => setUsername(e.target.value)}
           required
-          style={{ width: '100%', padding: '5px', border: '1px solid #ccc', borderRadius: '3px' }}
+          className={styles.input}
         />
       </div>
       <div style={{ marginBottom: '15px' }}>
@@ -35,10 +34,10 @@ const LoginForm = () => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
-          style={{ width: '100%', padding: '5px', border: '1px solid #ccc', borderRadius: '3px' }}
+          className={styles.input}
         />
       </div>
-      <button type="submit" style={{ backgroundColor: '#309eff', color: '#fff', padding: '10px 15px', borderRadius: '5px', cursor: 'pointer' }}>Iniciar Sesión</button>
+      <button type="submit" className={styles.button}>Iniciar Sesión</button>
     </form>
   );
 };

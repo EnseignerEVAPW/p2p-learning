@@ -1,6 +1,6 @@
 import React from 'react';
 import CalendarHeatmap from 'react-calendar-heatmap';
-import '../../../public/styles/calendar-heatmap.css';
+import styles from './Calendar.module.css';
 
 function Calendar() {
   const endDate = new Date();
@@ -42,10 +42,10 @@ function Calendar() {
   const monthLabels = generateMonthLabels(startDate, endDate).reverse();
 
   return (
-    <div className="calendar-heatmap-container">
-      <div className="month-labels-container">
+    <div className={styles.calendarHeatmapContainer}>
+      <div className={styles.monthLabelsContainer}>
         {monthLabels.map((label, index, array) => (
-          <span key={index} className={`month-label ${index === 0 || index === array.length - 1 ? 'first-or-last' : ''}`}>
+          <span key={index} className={`${styles.monthLabel} ${index === 0 ? styles.firstChild : ''} ${index === array.length - 1 ? styles.lastChild : ''}`}>
             {label}
           </span>
         ))}
@@ -57,7 +57,6 @@ function Calendar() {
         classForValue={(value) => {
           if (!value || value.count === 0)
             return 'color-empty';
-
           return `color-scale-${value.count}`;
         }}
         showMonthLabels={false}
