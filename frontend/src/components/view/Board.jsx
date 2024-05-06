@@ -19,6 +19,7 @@ import '../../../public/styles/Board.css';
 import { useCallback, useEffect, useState } from 'react';
 import axios from 'axios';
 import { navigate } from 'astro/virtual-modules/transitions-router.js';
+import styles from './Board.module.css';
 
 const HOST_URL = 'localhost:1999'  //QUIZA DIRECTAMENTE
 
@@ -61,7 +62,8 @@ function Board({codeRoom}) {
         }
     }
     return (
-        <div className="board-container" style={{marginBottom:100}}>
+
+        <div className={styles.boardContainer} style={{marginBottom:100}}>
             <Tldraw 
                 store={store}
                 components={{ SharePanel: NameEditor }}

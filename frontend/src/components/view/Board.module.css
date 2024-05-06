@@ -1,9 +1,10 @@
-.board-container {
+/* Board.module.css */
+.boardContainer {
     width: 100%;
     height: 700px;
 }
 
-.name-editor {
+.nameEditor {
     pointer-events: all;
     display: flex;
 }
