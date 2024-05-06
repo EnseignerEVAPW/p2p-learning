@@ -48,7 +48,7 @@ function Board({codeRoom}) {
         try{
             const random = parseInt(Math.random()*2000);
             const formData = new FormData();
-            formData.append('file', selectedFile, `image${random}.png`);
+            formData.append('file', selectedFile, `image.png`);
 
             const response = await axios.post('http://localhost:3000/images/upload', formData,{
                 headers:{
