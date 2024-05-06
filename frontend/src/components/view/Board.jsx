@@ -11,61 +11,49 @@
 // COMERCIABILIDAD o APTITUD PARA UN PROPÓSITO PARTICULAR. Vea la
 // GNU General Public License para más detalles.
 
-import { Tldraw, track, useEditor, useExportAs } from 'tldraw';
+import { Tldraw } from 'tldraw';
 import 'tldraw/tldraw.css'
 import { usePartyStore } from '../../services/usePartyStore';
 import NameEditor from '../common/NameEditor';
 import '../../../public/styles/Board.css';
 import { useCallback, useEffect, useState } from 'react';
 import axios from 'axios';
+import { navigate } from 'astro/virtual-modules/transitions-router.js';
 
 const HOST_URL = 'localhost:1999'  //QUIZA DIRECTAMENTE
 
 function Board({codeRoom}) {
-    const app = useEditor();
-    const exportAs = useExportAs();
-    
+    const [selectedFile, setSelectedFile] = useState(null);
     const store = usePartyStore({
         roomId: `example1${codeRoom}`,
         hostUrl: HOST_URL,
     });
 
-    /*const handleMount = useCallback((instance) => {
-        setApp(instance);
-    },[]);
+    const styles ={
+        button:{
+            margin: 10,
+        }
+    };
+    
+    const handleFileUpload =(event) =>{
+        const file = event.target.files[0];
+        if(file){
+            setSelectedFile(file);
+        }else{
+            console.log("File not found");
+        }
+    };
 
-    useEffect(()=> {
-        const interval = setInterval(()=> {
-            exportAndSave();
-        }, 300000);
-
-        return () => clearInterval(interval);
-    }, [app]);*/
-
-    const exportAndSave = async () => {
-        console.log("pase");
-        if(!app) return;
-        console.log("paseee");
-        const blob = await exportAs([], 'png', 'exported_image')
-        saveInDataBase(blob);
-        //const dataURL = await app.export({type:'png'});
-        //const blob = await app.export({type:'png', mimeType:'image/png', returnType:'blob'});
-
-        //await saveInDataBase(blob);
-    }
-
-    const saveInDataBase =  async(data) => {
+    const saveInDataBase =  async() => {
         try{
             const random = parseInt(Math.random()*2000);
             const formData = new FormData();
-            formData.append('file', data, `image${random}.png`);
+            formData.append('file', selectedFile, `image${random}.png`);
 
             const response = await axios.post('http://localhost:3000/images/upload', formData,{
-                //method:'POST',
                 headers:{
                     'Content-Type': 'multipart/form-data',
                 },
-                //body:JSON.stringify({image: data}),
             });
             console.log('Saved succesfully');
         }catch(e){
@@ -73,13 +61,16 @@ function Board({codeRoom}) {
         }
     }
     return (
-        <div className="board-container">
+        <div className="board-container" style={{marginBottom:100}}>
             <Tldraw 
                 store={store}
-                onMount={setEditorInstance}
                 components={{ SharePanel: NameEditor }}
             />
-            <button onClick={exportAndSave}>EXPORTAR</button>
+            <div style={styles.button}>
+                <input type='file' onChange={handleFileUpload} />
+            </div>
+            <button className='button' onClick={saveInDataBase} style={{backgroundColor:'violet'}}>GUARDAR</button>
+            <button className='button' onClick={()=>{navigate('/imagenes')}} style={{backgroundColor:'violet'}}>VER GUARDADOS</button>
         </div>
     );
 }
