@@ -11,11 +11,11 @@
 // COMERCIABILIDAD o APTITUD PARA UN PROPÓSITO PARTICULAR. Vea la
 // GNU General Public License para más detalles.
 
-import { Tldraw, track, useEditor } from 'tldraw';
+import { Tldraw } from 'tldraw';
 import 'tldraw/tldraw.css'
 import { usePartyStore } from '../../services/usePartyStore';
 import NameEditor from '../common/NameEditor';
-import '../../../public/styles/Board.css';
+import styles from './Board.module.css';
 
 const HOST_URL = 'localhost:1999'  //QUIZA DIRECTAMENTE
 
@@ -26,7 +26,7 @@ function Board() {
     });
 
     return (
-        <div className="board-container">
+        <div className={styles.boardContainer}>
             <Tldraw 
                 store={store}
                 components={{ SharePanel: NameEditor }}

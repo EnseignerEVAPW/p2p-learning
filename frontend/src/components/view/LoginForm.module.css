@@ -1,0 +1,19 @@
+/* LoginForm.module.css */
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+}
+.input {
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+.button {
+  background-color: #309eff;
+  color: #fff;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
