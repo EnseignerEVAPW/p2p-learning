@@ -1,0 +1,10 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ImageUploader from '../components/view/ImageUploader';
+---
+<BaseLayout
+    title='Imagenes Guardadas'
+    description ='Imagenes que sirve como registro de lo que realiza el usuario'
+>
+    <ImageUploader client:load/>
+</BaseLayout>

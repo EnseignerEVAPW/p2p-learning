@@ -15,22 +15,64 @@ import { Tldraw } from 'tldraw';
 import 'tldraw/tldraw.css'
 import { usePartyStore } from '../../services/usePartyStore';
 import NameEditor from '../common/NameEditor';
+import '../../../public/styles/Board.css';
+import { useCallback, useEffect, useState } from 'react';
+import axios from 'axios';
+import { navigate } from 'astro/virtual-modules/transitions-router.js';
 import styles from './Board.module.css';
 
 const HOST_URL = 'localhost:1999'  //QUIZA DIRECTAMENTE
 
-function Board() {
+function Board({codeRoom}) {
+    const [selectedFile, setSelectedFile] = useState(null);
     const store = usePartyStore({
-        roomId: 'example1',
+        roomId: `example1${codeRoom}`,
         hostUrl: HOST_URL,
     });
 
+    const styles ={
+        button:{
+            margin: 10,
+        }
+    };
+    
+    const handleFileUpload =(event) =>{
+        const file = event.target.files[0];
+        if(file){
+            setSelectedFile(file);
+        }else{
+            console.log("File not found");
+        }
+    };
+
+    const saveInDataBase =  async() => {
+        try{
+            const random = parseInt(Math.random()*2000);
+            const formData = new FormData();
+            formData.append('file', selectedFile, `image.png`);
+
+            const response = await axios.post('http://localhost:3000/images/upload', formData,{
+                headers:{
+                    'Content-Type': 'multipart/form-data',
+                },
+            });
+            console.log('Saved succesfully');
+        }catch(e){
+            console.error('fallo', e);
+        }
+    }
     return (
-        <div className={styles.boardContainer}>
+
+        <div className={styles.boardContainer} style={{marginBottom:100}}>
             <Tldraw 
                 store={store}
                 components={{ SharePanel: NameEditor }}
             />
+            <div style={styles.button}>
+                <input type='file' onChange={handleFileUpload} />
+            </div>
+            <button className='button' onClick={saveInDataBase} style={{backgroundColor:'violet'}}>GUARDAR</button>
+            <button className='button' onClick={()=>{navigate('/imagenes')}} style={{backgroundColor:'violet'}}>VER GUARDADOS</button>
         </div>
     );
 }

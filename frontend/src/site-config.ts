@@ -14,7 +14,7 @@ export const siteConfig = {
     },
     {
       text: 'Entrenar',
-      href: '/entrenar',
+      href: '/modoICPC',
     },
     {
       text: 'Reglas',
