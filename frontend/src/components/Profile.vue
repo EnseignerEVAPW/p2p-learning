@@ -1,13 +1,20 @@
 <script lang="ts" setup>
-import siteConfig from '../site-config'
+import { ref, computed, onMounted } from 'vue';
 
-const links = false ? {    ///acá este false debe ser cambiado por una condición que verifique si el usuario está logueado
-    text: 'Perfil',
-    href: '/profile',
-  }: {
-    text: 'Login',
-    href: '/login',
-  }
+const isLoggedIn = ref(false);
+
+onMounted(() => {
+  const token = localStorage.getItem('token');
+  isLoggedIn.value = !!token;
+});
+
+const links = computed(() => isLoggedIn.value ? {
+  text: 'Logout',
+  href: '/logout',
+} : {
+  text: 'Login',
+  href: '/login',
+});
 </script>
 
 <template>
