@@ -2,7 +2,20 @@
 import BaseLayout from '../layouts/BaseLayout.astro'
 import siteConfig from '../site-config'
 import Calendar from '../components/view/Calendar'
+import axios from 'axios'
 
+const getDataUser =  async () => {
+  try {
+    const response =  await axios.get('http://localhost:3000/auth/profile', {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`
+      }
+    })
+    console.log(response.data.message);
+  }catch (error) {
+    console.error('El error es:', error);
+  }
+}
 const userInfo = {
   username: 'callao_william',
   country: 'Bolivia',
@@ -22,6 +35,9 @@ const rankings = [
   { user: 'BitMasterOli', rating: 2250 },
   { user: 'VectorVic', rating: 2200 },
 ]
+
+getDataUser();
+
 ---
 
 <BaseLayout title="Perfil" description="">

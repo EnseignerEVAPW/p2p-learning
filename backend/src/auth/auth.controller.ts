@@ -29,7 +29,11 @@ export class AuthController {
     @Request()
     req: any
   ) {
-    return req.user;
+    if (req.user){
+      return req.user;
+    } else {
+      return { message: 'No user.'};
+    }
   }
 
 }

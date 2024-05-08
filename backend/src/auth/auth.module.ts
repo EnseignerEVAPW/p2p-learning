@@ -5,6 +5,7 @@ import { AuthController } from "./auth.controller";
 import { AuthService } from "./auth.service";
 import { jwtConstants } from "./constants/jwt.constant";
 import { CodeforcesService } from "src/codeforces/codeforces.service";
+import { JwtStrategy } from "./strategy/jwt.strategy";
 @Module({
   imports: [
     UsersModule,
@@ -15,6 +16,6 @@ import { CodeforcesService } from "src/codeforces/codeforces.service";
     }),
   ],
   controllers: [AuthController],
-  providers: [AuthService, CodeforcesService],
+  providers: [AuthService, CodeforcesService, JwtStrategy],
 })
 export class AuthModule {}

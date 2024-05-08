@@ -1,14 +1,26 @@
 import React, { useState } from 'react';
 import { navigate } from 'astro/virtual-modules/transitions-router.js';
+import axios from 'axios';
 
 const LoginForm = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
-    // Implement form submission logic here (e.g., API call)
+    try {
+      const response = await axios.post('http://localhost:3000/auth/login', {
+        username: username,
+        password: password,
+      });
+      const token = response.data.token;
+      localStorage.setItem('token', token);
+      navigate('/profile');
+    } catch(error){
+      alert('Error al hacer login');
+      console.error('El error:', error);
+    }
     console.log('Form submitted:', { username, password });
   };
 
